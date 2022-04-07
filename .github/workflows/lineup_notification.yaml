@@ -19,7 +19,7 @@ jobs:
           python-version: 3.8
 
       - name: install requirements
-        run: pip install -r requirements.txt
+        run: pip install -r cubs/requirements.txt
 
       - name: execute script
         run: python3 cubs/cubs-lineup.py
