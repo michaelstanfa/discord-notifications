@@ -1,0 +1,29 @@
+name: Send Cubs lineup to discord
+
+on:
+  schedule:
+    - cron: "0 17 * * *"
+  workflow-dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repo content
+        uses: actions/checkout@v2
+
+      - name: setup python 
+        uses: actions/setup-python@v2
+        with:
+          - python-version: 3.8
+
+      - name: install requirements
+        run: pip install -r requirements.txt
+
+      - name: execute script
+        run: python3 cubs/cubs-lineup.py
+        env:
+          MSF_MLB_DETAIL_ID: ${{ secrets.MSF_MLB_DETAIL_ID }}
+          MSF_MLB_DETAIL_SECRET: ${{ secrets.MSF_MLB_DETAIL_SECRET }}
+          DISCORD_CUBS_LINEUP_WEBHOOK_URL: ${{ secrets.DISCORD_CUBS_LINEUP_WEBHOOK_URL }}
