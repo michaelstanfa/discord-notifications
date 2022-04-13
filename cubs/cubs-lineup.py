@@ -84,7 +84,7 @@ class CubsLineup:
             from_tz = tz.gettz('UTC')
             to_tz = tz.gettz('America/Chicago')
 
-            central = time.replace(tzinfo=from_tz).astimezone(to_tz).strftime("%I:%m %p")            
+            central = time.replace(tzinfo=from_tz).astimezone(to_tz).strftime("%I:%M %p")            
 
             discord_fields.append(
                 {
